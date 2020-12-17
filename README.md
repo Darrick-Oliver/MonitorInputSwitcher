@@ -27,6 +27,8 @@ You have the choice of downloading the GUI version or Command Prompt version fro
 
 After connecting the Arduino, you should be able to run the MonitorInputSwitcher program. If there are any issues, the program will store it in a log file. If you have any issues with the program, please post the contents of the log file to the issue tracker and I will try to resolve them
 
+Something funny I noticed is that Windows thinks the GUI executable is a virus. I'll figure out how to fix this later.
+
 # 3. PCB and Chassis
 
 The PCB schematic is located in the files as "*MonitorSwitcher.brd*" and can be ordered from any PCB site (OshPark, JLCPCB, etc)

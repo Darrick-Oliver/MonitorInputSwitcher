@@ -7,7 +7,7 @@
 - 2 Pushbuttons
 - Monitor Switcher PCB (Or soldered breadboard)
 
-Check circuit diagram image to create the circuit.
+Check PCB diagram to create the circuit on a breadboard.
 
 # 2. Installing software
 

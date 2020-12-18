@@ -7,7 +7,7 @@
 - 2 Pushbuttons
 - Monitor Switcher PCB (Or soldered breadboard)
 
-Check PCB diagram to create the circuit on a breadboard.
+Find out how to build the circuit from the circuit diagram ("*circuit_diagram.png*") or view it on TinkerCAD: https://www.tinkercad.com/things/6FZK49Luh5o
 
 # 2. Installing software
 

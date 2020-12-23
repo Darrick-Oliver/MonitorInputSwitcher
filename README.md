@@ -1,4 +1,4 @@
-# 1. Required components
+# 1. Required Components
 
 - Arduino Uno (Soon to be Arduino Nano)
 - 2x 330Ω Resistors
@@ -9,7 +9,7 @@
 
 Find out how to build the circuit from the circuit diagram ("*circuit_diagram.png*") or view it on TinkerCAD: https://www.tinkercad.com/things/6FZK49Luh5o
 
-# 2. Installing software
+# 2. Installing Software
 
 **A. Arduino Installation**
 
@@ -28,3 +28,15 @@ If there are any issues, the program will create a log file. If you have any unr
 The PCB schematic is located in the files as "*MonitorSwitcher.brd*" and can be ordered from any PCB site (OshPark, JLCPCB, etc)
 
 The chassis is a WIP
+
+# 4. Changes and To-do List
+
+
+To see the changes made in each release, check the file "*changelog.txt*"
+
+To-do:
+- Cleaner file locations (installer)
+- Input detector, no need to enter inputs each time
+- Support for more than two inputs
+- Settings help
+- Update CMD version

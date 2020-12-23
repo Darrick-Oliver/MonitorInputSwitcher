@@ -1,0 +1,11 @@
+Changelog:
+
+12/22/2020 - v1.1.0
+- Removed ControlMyMonitor requirement
++ Fixed automatic monitor detection
++ Added ability to set monitor
+
+12/17/2020 - v1.0.1
++ Can now save settings
++ Fixed bug where program would run even if gui was closed
++ Cleaned up code

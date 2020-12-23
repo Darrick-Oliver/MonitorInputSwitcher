@@ -15,19 +15,13 @@ Find out how to build the circuit from the circuit diagram ("*circuit_diagram.pn
 
 Currently there isn't an easy way to install my Arduino code to the Arduino except through their software. I am working on a way to install the software through the MonitorInputSwitcher GUI, but for now you will have to install it manually. This means downloading the file "*MonitorSwitch.ino*" and uploading it using Arduino's software: https://www.arduino.cc/en/software
 
-**B. ControlMyMonitor**
+**B. MonitorInputSwitcher**
 
-The only dependency for this program is ControlMyMonitor which can be downloaded here: https://www.nirsoft.net/utils/control_my_monitor.html 
+You have the choice of downloading the GUI version or Command Prompt (CMD) version from the "dist" folder. **The GUI version is recommended**, as the CMD version is not up-to-date right now. I'm working on updating the CMD version to reflect changes made in the GUI version.
 
-Install it in your Program Files and add it to the command prompt path. For a more detailed explanation of how to do so, follow along with this Imgur album I made: https://imgur.com/a/4GtlqDX
+After connecting the Arduino, you should be able to run the MonitorInputSwitcher executable. Windows may say that the program is a virus, however it is not. I'm working on a way to fix this right now, I think it has something to do with the way I compiled the code into an exe file.
 
-**C. MonitorInputSwitcher**
-
-You have the choice of downloading the GUI version or Command Prompt version from the "dist" folder. **The GUI version is recommended**, as I am not updating the Command Prompt version right now. The only difference between the two versions is that the GUI version allows the user to change the settings before running the program.
-
-After connecting the Arduino, you should be able to run the MonitorInputSwitcher program. If there are any issues, the program will store it in a log file. If you have any issues with the program, please post the contents of the log file to the issue tracker and I will try to resolve them
-
-Something funny I noticed is that Windows thinks the GUI executable is a virus. I'll figure out how to fix this later.
+If there are any issues, the program will create a log file. If you have any unresolved issues with this program, please post the contents of the log file to the issue tracker and I will try to resolve them.
 
 # 3. PCB and Chassis
 

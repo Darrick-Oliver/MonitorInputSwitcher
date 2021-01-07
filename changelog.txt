@@ -1,5 +1,9 @@
 Changelog:
 
+12/26/2020 - v1.1.1
++ Fixed crashing bug with improperly formatted settings file
++ Updated CMD program
+
 12/22/2020 - v1.1.0
 - Removed ControlMyMonitor requirement
 + Fixed automatic monitor detection

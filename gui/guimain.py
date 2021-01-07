@@ -1,5 +1,5 @@
 from datetime import datetime
-from ctypes import windll, WinError
+from ctypes import windll
 import time, os, sys, serial, moncontrol
 
 
@@ -119,6 +119,6 @@ def main(args):
         log = checkMonitor(input1, input2, arduino, current, log)
         serialLoop(arduino, input1, input2, log, current, monitor)
     except Exception as ex:
-        log += 'Failure - Unknown fail'
+        log += 'Failure - Unknown fail\n'
         log += type(ex).__name__, '\n', ex.args
         createLog(log)

@@ -40,11 +40,16 @@ class Settings:
 
         self.start = 0
 
-        self.port = settings[0]
-        self.baud = settings[1]
-        self.DP = settings[2]
-        self.HDMI = settings[3]
-        self.monitor = settings[4]
+        try:
+            self.port = settings[0]
+            self.baud = settings[1]
+            self.DP = settings[2]
+            self.HDMI = settings[3]
+            self.monitor = settings[4]
+        except IndexError as ex:
+            log = 'Failure - Unknown settings file\n'
+            log += 'Delete settings file and relaunch\n'
+            guimain.createLog(log)
 
         self.t_port = StringVar()
         self.t_baud = StringVar()

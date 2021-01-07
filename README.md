@@ -40,3 +40,4 @@ To-do:
 - Support for more than two inputs
 - Settings help
 - Update CMD version
+- Add automatic installation of Arduino software

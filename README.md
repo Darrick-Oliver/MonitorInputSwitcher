@@ -31,9 +31,7 @@ The chassis is a WIP
 # 4. Changes and To-do List
 
 To-do:
-- Cleaner file locations (installer)
 - Input detector, no need to enter inputs each time
 - Support for more than two inputs
 - Settings help
-- Update CMD version
 - Add automatic installation of Arduino software

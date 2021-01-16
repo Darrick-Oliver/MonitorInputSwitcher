@@ -1,4 +1,4 @@
-from ctypes import windll, byref, Structure, WinError, POINTER, WINFUNCTYPE
+from ctypes import *
 from ctypes.wintypes import BOOL, HMONITOR, HDC, RECT, LPARAM, DWORD, BYTE, WCHAR, HANDLE
 
 

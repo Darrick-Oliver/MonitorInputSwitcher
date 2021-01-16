@@ -2,10 +2,10 @@ import os, guimain
 
 
 def getSettings():
-    if not os.path.exists("settings.txt"):
-        log = 'Failure - No settings exist. Please run the GUI program to set the settings.'
+    if not os.path.exists('settings/.msettings'):
+        log = 'Failure - No settings exist. Please run the GUI program to configure the settings.'
         guimain.createLog(log)
-    settingsFile = open("settings.txt", "r+")
+    settingsFile = open('settings/.msettings', 'r+')
     lines = settingsFile.readlines()
     settingsFile.close()
     settings = []
@@ -30,5 +30,4 @@ class Settings:
             guimain.createLog(log)
 
 S = Settings()
-print(S.baud)
 guimain.main(S)

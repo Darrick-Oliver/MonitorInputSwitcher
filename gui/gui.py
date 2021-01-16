@@ -1,20 +1,22 @@
 from tkinter import *
-import os, guimain
-
+import os, guimain, serial.tools.list_ports
+from tkinter import messagebox
 
 def settingsExists():
-    if not os.path.exists("settings.txt"):
-        settingsFile = open("settings.txt", "w+")
-        settingsFile.write("COM3\n")
-        settingsFile.write("9600\n")
-        settingsFile.write("15\n")
-        settingsFile.write("17\n")
-        settingsFile.write("0\n")
+    if not os.path.exists('settings'):
+        os.mkdir('settings')
+    if not os.path.exists('settings/.msettings'):
+        settingsFile = open('settings/.msettings', 'w+')
+        settingsFile.write('Select Port...\n')
+        settingsFile.write('9600\n')
+        settingsFile.write('15\n')
+        settingsFile.write('17\n')
+        settingsFile.write('0\n')
         settingsFile.close()
 
 
 def getSettings():
-    settingsFile = open("settings.txt", "r+")
+    settingsFile = open('settings/.msettings', 'r+')
     lines = settingsFile.readlines()
     settingsFile.close()
     settings = []
@@ -24,14 +26,21 @@ def getSettings():
 
 
 def setSettings(port, baud, input1, input2, monitor):
-    settingsFile = open("settings.txt", "w+")
-    settingsFile.write(port + "\n")
-    settingsFile.write(baud + "\n")
-    settingsFile.write(input1 + "\n")
-    settingsFile.write(input2 + "\n")
-    settingsFile.write(monitor + "\n")
+    settingsFile = open('settings/.msettings', 'w+')
+    settingsFile.write(port + '\n')
+    settingsFile.write(baud + '\n')
+    settingsFile.write(input1 + '\n')
+    settingsFile.write(input2 + '\n')
+    settingsFile.write(monitor + '\n')
     settingsFile.close()
 
+
+def getPorts():
+    ports = serial.tools.list_ports.comports()
+    returnPorts = []
+    for port, desc, hwid in sorted(ports):
+        returnPorts.append(port)
+    return returnPorts
 
 class Settings:
     def __init__(self, top):
@@ -58,14 +67,15 @@ class Settings:
         self.t_monitor = StringVar()
 
         # Settings frame
-        settingsFrame = LabelFrame(root, text="Settings", padx=50, pady=20)
+        settingsFrame = LabelFrame(root, text='Settings', padx=50, pady=20)
         settingsFrame.pack(padx=10, pady=10)
 
         # Port entry
+        self.t_port.set(settings[0])
+        ports = getPorts()
         Label(settingsFrame, text='Port: ').grid(row=0, column=0)
-        portEntry = Entry(settingsFrame, textvariable=self.t_port, width=8)
+        portEntry = OptionMenu(settingsFrame, self.t_port, *ports)
         portEntry.grid(row=0, column=1)
-        portEntry.insert(0, self.port)
 
         # Baud entry
         Label(settingsFrame, text='Baud: ').grid(row=1, column=0)
@@ -96,19 +106,19 @@ class Settings:
         buttonsFrame.pack()
 
         # Save button
-        saveButton = Button(buttonsFrame, text="Start", command=self.startProtocol)
+        saveButton = Button(buttonsFrame, text='Start', command=self.startProtocol)
         saveButton.pack(side=LEFT, padx=5)
 
         # Save button
-        quitButton = Button(buttonsFrame, text="Save settings", command=self.saveProtocol)
+        quitButton = Button(buttonsFrame, text='Save settings', command=self.saveProtocol)
         quitButton.pack(side=LEFT, padx=5)
 
         # Exit button
-        exitButton = Button(buttonsFrame, text="Exit", command=self.exitProtocol)
+        exitButton = Button(buttonsFrame, text='Exit', command=self.exitProtocol)
         exitButton.pack(side=LEFT, padx=5)
 
         # Version number
-        Label(root, text='Version 1.1.0').pack(side=LEFT, padx=5, pady=15)
+        Label(root, text='Version 1.1.1').pack(side=LEFT, padx=5, pady=15)
 
     def startProtocol(self):
         self.port = self.t_port.get()
@@ -130,18 +140,25 @@ class Settings:
         setSettings(self.port, self.baud, self.DP, self.HDMI, self.monitor)
 
     def exitProtocol(self):
-        # if self.port != self.t_port.get() or self.baud != self.t_baud.get() or self.DP != self.t_DP.get() or self.HDMI != self.t_HDMI.get():
-        # Use above to check if settings have been changed without saving and add warning
         root.destroy()
 
 # GUI
 root = Tk()
 
-root.geometry("270x230+100+50")
-root.title("Monitor Input Switcher")
+windowIcon = PhotoImage(file = 'resources/img/settings.png')
+
+root.geometry('270x230+100+50')
+root.title('Monitor Input Switcher')
+root.iconphoto(False, windowIcon)
 
 S = Settings(root)
 root.mainloop()
 
 if S.start:
     guimain.main(S)
+else:
+    if S.port != S.t_port.get() or S.baud != S.t_baud.get() or S.DP != S.t_DP.get() or S.HDMI != S.t_HDMI.get() or S.monitor != S.t_monitor.get():
+        root = Tk()
+        root.withdraw()
+        if messagebox.askyesno('Settings not saved', 'Your settings are not saved yet, do you wish to save them now?'):
+            setSettings(S.t_port.get(), S.t_baud.get(), S.t_DP.get(), S.t_HDMI.get(), S.t_monitor.get())

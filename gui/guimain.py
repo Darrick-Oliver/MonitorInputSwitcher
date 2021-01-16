@@ -30,7 +30,7 @@ def connect(port, baud, log):
     try:
         arduino = serial.Serial(port, baud, timeout=.1)
     except serial.SerialException:
-        log += "Failure - Could not open port " + port
+        log += 'Failure - Could not open port ' + port
         createLog(log)
     log += 'Connecting to Arduino...\n'
     time.sleep(2)   # Arduino resets on new connection, wait 2 seconds before sending data
@@ -46,7 +46,7 @@ def checkMonitor(DP, HDMI, arduino, current, log):
         log += 'Using Input 2\n'
         arduino.write('2'.encode())
     else:
-        log += "Failure - Connected monitor isn't using input value " + str(DP) + " or input value " + str(HDMI) + ". Monitor has input value " + str(current)
+        log += 'Failure - Connected monitor isn\'t using input value ' + str(DP) + ' or input value ' + str(HDMI) + '. Monitor has input value ' + str(current)
         createLog(log)
     return log
 
@@ -63,11 +63,11 @@ def serialLoop(arduino, DP, HDMI, log, current, monitor):
             currMon = moncontrol.get_monitor_input(handles[monitor], 0x60)
             if data:
                 if data == b'1':
-                    log += "Switching To Input 1\n"
+                    log += 'Switching To Input 1\n'
                     moncontrol.set_vcp_feature(handles[monitor], 0x60, DP)
                     # current = DP
                 if data == b'2':
-                    log += "Switching To Input 2\n"
+                    log += 'Switching To Input 2\n'
                     moncontrol.set_vcp_feature(handles[monitor], 0x60, HDMI)
                     # current = HDMI
 
@@ -98,7 +98,7 @@ def destroyHandles(handles):
 
 def createLog(log):
     save_path = createLogDir()
-    logFile = open(save_path + "log_" + datetime.now().strftime("%m.%d.%Y_%H.%M.%S") + ".txt", "x")
+    logFile = open(save_path + 'log_' + datetime.now().strftime('%m.%d.%Y_%H.%M.%S') + '.txt', 'x')
     logFile.write(log)
     logFile.close()
     sys.exit()

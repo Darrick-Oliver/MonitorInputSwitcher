@@ -1,13 +1,13 @@
 # 1. Required Components
 
-- Arduino Uno (Soon to be Arduino Nano)
+- Arduino Nano
 - 2x 330Ω resistors
 - 2x 10kΩ resistors
 - 2 LEDs
 - 2 pushbutton switches
 - Monitor Switcher PCB (Or soldered breadboard)
 
-View the circuit schematic on TinkerCAD: https://www.tinkercad.com/things/6FZK49Luh5o
+View the circuit schematic on TinkerCAD: https://www.tinkercad.com/things/7qLFwGoTEAK
 
 # 2. Installing Software
 
